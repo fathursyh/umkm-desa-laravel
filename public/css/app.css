@@ -1,0 +1,415 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: black;
+}
+
+.navbar {
+  background: rgba(0, 0, 0, 0.120);
+  transition: all 0.5s;
+}
+
+.navbar-scrolled {
+  background: rgb(33, 37, 41);
+  /* warna dari bg-dark bootstrap */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Menyesuaikan warna teks navbar saat transparan */
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: rgb(17, 175, 17);
+}
+
+/* Menyesuaikan warna dropdown */
+.dropdown-menu {
+  background: rgb(33, 37, 41);
+}
+
+.dropdown-item {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.navbar-brand {
+  font-size: 12pt;
+  line-height: 18px;
+}
+
+.btn-outline-custom {
+  color: white;
+  border-color: white;
+}
+
+.btn-outline-custom:hover {
+  color: white;
+  background-color: rgb(17, 175, 17);
+}
+
+.banner {
+  position: relative;
+  color: #fff;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  overflow: hidden;
+  /* Untuk memastikan latar tidak melebihi kontainer */
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/container.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  /* Atur nilai opacity di sini */
+  z-index: -1;
+  /* Pastikan latar ada di belakang konten */
+}
+
+.kegiatan {
+  color: #0d0d0d;
+  background-color: #fff;
+}
+
+.kegiatan-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kegiatan-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.kegiatan-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.kegiatan-content {
+  padding: 1.5rem;
+}
+
+.kegiatan-content h3 {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.kegiatan-content p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.floating-socials {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #072e48;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon i {
+  font-size: 20px;
+}
+
+#layanan {
+  background-color: #f0f4f8;
+  padding: 80px 0;
+}
+
+.service-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.service-item {
+  flex-basis: calc(50% - 20px);
+  /* 50% lebar dikurangi gap */
+  max-width: calc(50% - 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.service-icon {
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #3498db, #2980b9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
+}
+
+.service-icon i {
+  font-size: 40px;
+  color: #ffffff;
+}
+
+.service-item:hover .service-icon {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(52, 152, 219, 0.3);
+}
+
+.service-item h4 {
+  color: #2c3e50;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.btn-service {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(145deg, #3498db, #2980b9);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.service-item:hover .btn-service {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-body {
+  padding: 0.75rem;
+  /* Kurangi padding */
+}
+
+/* General styling for the section */
+#berita {
+  background-color: #5a5a5a;
+  padding: 50px 0;
+}
+
+/* Container styling */
+#berita .container {
+  margin-top: 25px;
+  margin-bottom: 100px;
+}
+
+/* Section heading */
+#berita h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+#berita p {
+  font-size: 1rem;
+  color: #d3d3d3;
+  margin-top: 10px;
+}
+
+/* News cards */
+.news-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.news-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.news-card .card-body {
+  padding: 20px;
+}
+
+.news-card .card-date {
+  font-size: 0.9rem;
+  color: #757575;
+  margin-bottom: 10px;
+}
+
+.news-card .card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.news-card .card-text {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.news-card .btn-read-more {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.news-card .btn-read-more:hover {
+  background-color: #0056b3;
+}
+
+/* More news card */
+.news-card.more-news {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6c757d;
+  border-radius: 10px;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+}
+
+.news-card.more-news .btn-more-news {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #343a40;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.news-card.more-news .btn-more-news:hover {
+  background-color: #1d2124;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #berita h2 {
+      font-size: 2rem;
+  }
+
+  #berita p {
+      font-size: 0.9rem;
+  }
+
+  .news-card img {
+      height: 150px;
+  }
+}
+
+#map, iframe {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+#sejarah-desa,#visimisi,#strukturdesa,#demografi {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.org-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.org-level {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.org-unit {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 0 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.org-unit:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+.org-unit h3, .org-unit h4, .org-unit h5 {
+  margin-bottom: 5px;
+  color: #343a40;
+}
+.org-unit p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+.kepala-desa {
+  background-color: #e9ecef;
+  border-bottom: 3px solid #007bff;
+}
+.sekretaris-desa {
+  background-color: #e9ecef;
+  border-bottom: 3px solid #28a745;
+}
+.kaur {
+  border-bottom: 3px solid #ffc107;
+}
+.kadus {
+  border-bottom: 3px solid #17a2b8;
+}
