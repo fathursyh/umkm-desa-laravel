@@ -17,21 +17,14 @@ class SubmissionController extends Controller
 
     public function create()
     {
-        $umkm = Auth::user();
-        return view('umkm.submissions.create', [
-            "umkm" => $umkm
-        ]);
+        return view('umkm.submissions.create');
     }
 
     public function store(Request $request)
     {
-        $tahun = $request->input('establishment_date');
-        dd($tahun);
         $request->validate([
-            'umkm_name' => 'required|string',
-            'establishment_date' => 'required|date',
-            'business_type' => 'required|string',
-            'description' => 'required|string',
+            'tujuan_pengajuan' => 'required|string|max:255',
+            'pendapatan_bulan' => 'required|numeric',
             'application_letter' => 'required|mimes:pdf|max:5120',
             'rab_document' => 'required|mimes:pdf|max:5120',
         ]);
