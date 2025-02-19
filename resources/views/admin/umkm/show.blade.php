@@ -33,25 +33,25 @@
 
                     <h5>Documents</h5>
                     <div class="mb-3">
-                        <label class="form-label">Business Certificate</label>
+                        <label class="form-label">NIB</label>
                         <div>
-                            <a href="{{ Storage::url($umkm->business_certificate) }}" class="btn btn-sm btn-primary" target="_blank">
-                                View Certificate
+                            <a href="{{ Storage::url($umkm->nib) }}" class="btn btn-sm btn-primary" target="_blank">
+                                Lihat Dokumen
                             </a>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">RT Letter</label>
+                        <label class="form-label">Surat Pengantar</label>
                         <div>
-                            <a href="{{ Storage::url($umkm->rt_letter) }}" class="btn btn-sm btn-primary" target="_blank">
-                                View Letter
+                            <a href="{{ Storage::url($umkm->surat_pengantar) }}" class="btn btn-sm btn-primary" target="_blank">
+                                Lihat Surat
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-6">
-                    <h5>Products</h5>
+                    <h5>Produk</h5>
                     @foreach($umkm->products as $product)
                     <div class="card mb-3">
                         <div class="card-body">
@@ -99,7 +99,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label">Reason for Rejection</label>
+                        <label class="form-label">Alasan</label>
                         <textarea class="form-control" name="rejection_reason" rows="3" required></textarea>
                     </div>
                 </div>

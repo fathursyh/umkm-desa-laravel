@@ -23,9 +23,14 @@ class User extends Authenticatable
         'password',
         'role',
         'status',
-        'business_certificate',
-        'rt_letter',
-        'rejection_reason'
+        'jenis_usaha',
+        'jumlah_karyawan',
+        'lokasi',
+        'nib',
+        'surat_pengantar',
+        'rejection_reason',
+        'deskripsi',
+        'tahun_berdiri',
     ];
 
     /**

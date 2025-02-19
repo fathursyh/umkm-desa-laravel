@@ -17,11 +17,16 @@ class SubmissionController extends Controller
 
     public function create()
     {
-        return view('umkm.submissions.create');
+        $umkm = Auth::user();
+        return view('umkm.submissions.create', [
+            "umkm" => $umkm
+        ]);
     }
 
     public function store(Request $request)
     {
+        $tahun = $request->input('establishment_date');
+        dd($tahun);
         $request->validate([
             'umkm_name' => 'required|string',
             'establishment_date' => 'required|date',

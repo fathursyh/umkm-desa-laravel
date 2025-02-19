@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class PresentationController extends Controller
 {
@@ -13,7 +14,14 @@ class PresentationController extends Controller
 
     public function umkm()
     {
-        return view('presentation.umkm');
+        $umkm = User::where('role', 'umkm')->get();
+        return view('presentation.umkm', compact('umkm'));
+    }
+
+    public function productview($id)
+    {
+        $productview = User::with('products.images')->findOrFail($id);
+        return view('presentation.productview', compact('productview'));
     }
 
     public function staff()

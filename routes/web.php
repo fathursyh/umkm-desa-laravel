@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminSubmissionController;
 use App\Http\Controllers\NewsController;
 use App\Models\News;
 use App\Http\Controllers\PresentationController;
+use App\Http\Controllers\ProductsController;
 
 Route::get('/', function () {
     $latestNews = News::latest()->take(5)->get();
@@ -22,6 +23,7 @@ Route::get('/tentang', [PresentationController::class, 'tentang'])->name('tentan
 Route::get('/umkm', [PresentationController::class, 'umkm'])->name('umkm');
 Route::get('/staff', [PresentationController::class, 'staff'])->name('staff');
 Route::get('/kontak', [PresentationController::class, 'kontak'])->name('kontak');
+Route::get('/productview/{id}', [PresentationController::class,'productview'])->name('umkm.lihat');
 
 // news
 // Public routes for news
@@ -44,6 +46,15 @@ Route::group(['prefix' => 'account'], function () {
 
         // UMKM Submission Routes
         Route::resource('submissions', SubmissionController::class);
+        Route::resource('products', ProductsController::class)->names([
+            'index' => 'products.index',
+            'create' => 'products.create',
+            'store' => 'products.store',
+            'show' => 'products.show',
+            'edit' => 'products.edit',
+            'update' => 'products.update',
+            'destroy' => 'products.destroy',
+        ]);
 
         // Admin routes
         Route::group(['middleware' => 'admin', 'prefix' => 'admin', 'as' => 'admin.'], function () {

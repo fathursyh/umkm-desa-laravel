@@ -1,8 +1,8 @@
 <div class="floating-socials">
-    <a href="https://facebook.com/" target="_blank" class="social-icon facebook">
+    <a href="https://www.facebook.com/profile.php?id=100068911694483" target="_blank" class="social-icon facebook">
         <i class="fab fa-facebook-f"></i>
     </a>
-    <a href="https://www.instagram.com/pemerintah_desa_tegal/" target="_blank" class="social-icon instagram">
+    <a href="https://www.instagram.com/kel_atangsenjaya/" target="_blank" class="social-icon instagram">
         <i class="fab fa-instagram"></i>
     </a>
     <a href="https://twitter.com/" target="_blank" class="social-icon twitter">
@@ -49,9 +49,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#kegiatan">Kegiatan</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="#layanan">Layanan</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="#berita">Berita</a>
                         </li>

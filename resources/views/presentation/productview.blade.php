@@ -4,35 +4,22 @@
     <div class="container py-4">
         <div class="row">
             <div class="col-12">
+                <h2 class="text-center mb-4">List Produk {{$productview->name}}</h2>
                 <h2 class="text-center mb-4"></h2>
-                <h2 class="text-center mb-4">UMKM</h2>
-
+                
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="news-container">
-                    @foreach ($umkm as $user)
-                        <div class="col">
-                            <div class="card h-100 news-item">
-                                <div class="card-img-wrapper">
-                                    <img src="https://ikpi.or.id/wp-content/uploads/2024/12/d0bd99163261318d5675e320af42c52d.jpeg" class="card-img-top" alt="">
-                                </div>
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title">{{$user->name}}</h5>
-                                    <p class="card-text flex-grow-1">{{$user->deskripsi}}</p>
-                                    <div class="d-flex justify-content-between align-items-center mt-3">
-                                        <a href="{{ route('umkm.lihat', $user->id) }}" class="btn btn-primary">
-                                            Lihat Produk
-                                        </a>
-                                        <div class="share-buttons">
-                                            <a href="" class="btn btn-success btn-sm" target="_blank">
-                                                <i class="ri-whatsapp-line"></i>
-                                            </a>
-                                            <a href="" class="btn btn-primary btn-sm" target="_blank">
-                                                <i class="ri-facebook-circle-line"></i>
-                                            </a>
-                                        </div>
+                    @foreach ($productview->products as $product)
+                            <div class="col">
+                                <div class="card h-100 news-item">
+                                    <div class="card-img-wrapper">
+                                        <img src="{{ Storage::url($product->images->first()->image_path) }}" class="card-img-top" alt="">
+                                    </div>
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title">{{ $product->name }}</h5>
+                                        <p class="card-text flex-grow-1">{{ $product->description }}</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     @endforeach
                 </div>
 

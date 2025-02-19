@@ -50,9 +50,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('home')}}">Kegiatan</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{route('home')}}">Layanan</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('home')}}">Berita</a>
                         </li>

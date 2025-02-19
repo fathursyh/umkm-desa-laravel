@@ -39,10 +39,6 @@
                                     <td>{{ $item->created_at->format('d M Y') }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            {{-- <a href="{{ route('admin.news.show', $item->slug) }}" 
-                                               class="btn btn-sm btn-info">
-                                                <i class="ri-eye-line"></i> Lihat
-                                            </a> --}}
                                             <a href="{{ route('admin.news.edit', $item) }}" 
                                                class="btn btn-sm btn-warning">
                                                 <i class="ri-pencil-line"></i> Edit

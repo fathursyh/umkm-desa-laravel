@@ -39,7 +39,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{ route('tentang') }}">Tentang</a></li>
                                 <li><a class="dropdown-item" href="{{ route('staff') }}">Staff</a></li>
-                                <li><a class="dropdown-item" href="{{ route('umkm') }}">Visi Misi</a></li>
+                                <li><a class="dropdown-item" href="{{ route('umkm') }}">UMKM</a></li>
                                 <li><a class="dropdown-item" href="{{ route('kontak') }}">Kontak</a></li>
                             </ul>
                         </li>
