@@ -29,6 +29,10 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('umkm123'),
             'role' => 'umkm',
             'status' => 'approved',
+            'jenis_usaha' => 'Food and Beverage',
+            'jumlah_karyawan' => 5,
+            'tahun_berdiri' => 2023,
+            'alamat_usaha' => 'Jln. Raya Pakuan Kab. Bogor'
         ]);
 
         $this->call([
