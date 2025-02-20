@@ -384,6 +384,7 @@ body {
   padding: 15px;
   margin: 0 10px;
   text-align: center;
+
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
@@ -400,10 +401,12 @@ body {
   color: #6c757d;
 }
 .kepala-desa {
+    min-width: 250px;
   background-color: #e9ecef;
   border-bottom: 3px solid #007bff;
 }
 .sekretaris-desa {
+    min-width: 250px;
   background-color: #e9ecef;
   border-bottom: 3px solid #28a745;
 }

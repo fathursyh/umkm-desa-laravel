@@ -20,7 +20,7 @@
                 <div class="d-flex align-items-center">
                     <img src="{{ asset('images/logo.png') }}" alt="Logo" class="img-fluid me-2"
                         style="max-width: 40px;">
-                    <a class="navbar-brand mb-0" href="#">
+                    <a class="navbar-brand mb-0" href="/">
                         <strong>KECAMATAN KEMANG</strong><br>KECAMATAN BOGOR
                     </a>
                 </div>
