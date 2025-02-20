@@ -15,19 +15,18 @@ class RegistrationController extends Controller
 
     public function storeStep1(Request $request)
     {
-        $validated = $request->validate(rules: [
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8'
+            'password' => 'required|min:8',
         ]);
 
-        $request->session()->put('registration_data', $validated);
+        $request->session()->put('auth_data', $validated);
         return redirect()->route('register.step2');
     }
-
     public function step2()
     {
-        if (!session()->has('registration_data')) {
+        if (!session()->has('auth_data')) {
             return redirect()->route('register.step1');
         }
         return view('auth.register.step2');
@@ -35,20 +34,22 @@ class RegistrationController extends Controller
 
     public function storeStep2(Request $request)
     {
-        $request->validate([
-            'business_certificate' => 'required|mimes:pdf|max:2048'
+        $data = $request->validate([
+            'jenis_usaha' => 'required',
+            'deskripsi' => 'required',
+            'tahun_berdiri' => 'required|digits:4|numeric',
+            'jumlah_karyawan' => 'required|integer|min:1',
+            'alamat_usaha' => 'required',
         ]);
 
-        // Change to store in public disk
-        $path = $request->file('business_certificate')->store('certificates', 'public');
-        $request->session()->put('business_certificate', $path);
+        $request->session()->put('registration_data', $data);
 
         return redirect()->route('register.step3');
     }
 
     public function step3()
     {
-        if (!session()->has('business_certificate')) {
+        if (!session()->has('registration_data')) {
             return redirect()->route('register.step2');
         }
         return view('auth.register.step3');
@@ -89,22 +90,27 @@ class RegistrationController extends Controller
     public function storeStep4(Request $request)
     {
         $request->validate([
-            'rt_letter' => 'required|mimes:pdf|max:2048'
-        ]);
 
+            'nib' => 'required|mimes:pdf|max:2048',
+            'surat_pengantar' => 'required|mimes:pdf|max:2048',
+        ]);
         $registrationData = $request->session()->get('registration_data');
-        $businessCertificate = $request->session()->get('business_certificate');
+        $authData = $request->session()->get('auth_data');
         $productData = $request->session()->get('product_data');
 
         $user = User::create([
-            'name' => $registrationData['name'],
-            'email' => $registrationData['email'],
-            'password' => bcrypt($registrationData['password']),
+            'name' => $authData['name'],
+            'email' => $authData['email'],
+            'password' => bcrypt($authData['password']),
             'role' => 'umkm',
             'status' => 'pending',
-            'business_certificate' => $businessCertificate,
-            // Change to store in public disk
-            'rt_letter' => $request->file('rt_letter')->store('rt_letters', 'public')
+            'jenis_usaha' => $registrationData['jenis_usaha'],
+            'deskripsi' => $registrationData['deskripsi'],
+            'tahun_berdiri' => $registrationData['tahun_berdiri'],
+            'jumlah_karyawan' => $registrationData['jumlah_karyawan'],
+            'alamat_usaha' => $registrationData['alamat_usaha'],
+            'nib' => $request->file('nib')->store('nib', 'public'),
+            'surat_pengantar' => $request->file('surat_pengantar')->store('surat_pengantar', 'public')
         ]);
 
         // Create products
@@ -123,8 +129,8 @@ class RegistrationController extends Controller
         }
 
         $request->session()->forget([
+            'auth_data',
             'registration_data',
-            'business_certificate',
             'product_data'
         ]);
 

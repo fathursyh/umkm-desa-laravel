@@ -11,14 +11,13 @@ return new class extends Migration
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('umkm_name');
-            $table->date('establishment_date');
-            $table->string('business_type');
-            $table->text('description');
+            $table->string('tujuan_pengajuan');
+            $table->decimal('pendapatan_bulan', 15, 2);
             $table->string('application_letter');
             $table->string('rab_document');
             $table->enum('status', ['pending', 'approved', 'rejected', 'revision'])->default('pending');
             $table->text('admin_notes')->nullable();
+            $table->boolean('recommended')->default(false);
             $table->timestamps();
         });
     }

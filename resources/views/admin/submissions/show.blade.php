@@ -13,24 +13,20 @@
                     <h5>UMKM Information</h5>
                     <table class="table">
                         <tr>
-                            <th>UMKM Name</th>
-                            <td>{{ $submission->umkm_name }}</td>
+                            <th>Nama UMKM</th>
+                            <td>{{ $submission->user->name }}</td>
                         </tr>
                         <tr>
-                            <th>Business Type</th>
-                            <td>{{ $submission->business_type }}</td>
+                            <th>Jenis Usaha</th>
+                            <td>{{ $submission->user->jenis_usaha ?? "-" }}</td>
                         </tr>
                         <tr>
-                            <th>Establishment Date</th>
-                            <td>{{ $submission->establishment_date->format('d M Y') }}</td>
+                            <th>Tahun Berdiri</th>
+                            <td>{{ $submission->user->tahun_berdiri ?? "-" }}</td>
                         </tr>
                         <tr>
-                            <th>Age</th>
-                            <td>{{ $submission->umkm_age }}</td>
-                        </tr>
-                        <tr>
-                            <th>Description</th>
-                            <td>{{ $submission->description }}</td>
+                            <th>Deskripsi</th>
+                            <td>{{ $submission->user->deskripsi ?? "-" }}</td>
                         </tr>
                         <tr>
                             <th>Status</th>

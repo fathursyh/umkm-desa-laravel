@@ -17,18 +17,23 @@ class SubmissionController extends Controller
 
     public function create()
     {
-        return view('umkm.submissions.create');
+        return view('umkm.submissions.create', [
+            'submition_count' => Auth::user()->submissions->count() <= 10,
+        ]);
     }
 
     public function store(Request $request)
     {
+        // Check if user is not admin
+        if (Auth::user()->role === 'admin' || Auth::user()->submissions->count() >= 10) {
+            abort(403);
+        }
+
         $request->validate([
-            'umkm_name' => 'required|string',
-            'establishment_date' => 'required|date',
-            'business_type' => 'required|string',
-            'description' => 'required|string',
-            'application_letter' => 'required|mimes:pdf|max:5120',
-            'rab_document' => 'required|mimes:pdf|max:5120',
+            'tujuan_pengajuan' => 'required|string|min:1|max:255',
+            'pendapatan_bulan' => 'required|numeric|decimal:0,2|min:0|max:9999999999999.99',
+            'application_letter' => 'required|file|mimes:pdf|max:5120',
+            'rab_document' => 'required|file|mimes:pdf|max:5120',
         ]);
 
         $submission = new Submission($request->except(['application_letter', 'rab_document']));

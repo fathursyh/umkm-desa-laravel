@@ -99,7 +99,6 @@
             <div class="container-fluid kegiatan pt-5 pb-5">
                 <div class="container text-center">
                     <h2 class="text-uppercase mb-3">Kegiatan Masyarakat</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, tempora.</p>
                     <div class="row pt-4">
                         <div class="col-md-4">
                             <div class="kegiatan-card">
@@ -108,7 +107,6 @@
                                 </div>
                                 <div class="kegiatan-content">
                                     <h3 class="mt-3">Pembangunan</h3>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, obcaecati.</p>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +116,6 @@
                                 </div>
                                 <div class="kegiatan-content">
                                     <h3 class="mt-3">Perlombaan</h3>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, obcaecati.</p>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +125,6 @@
                                 </div>
                                 <div class="kegiatan-content">
                                     <h3 class="mt-3">UMKM</h3>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, obcaecati.</p>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +132,7 @@
                 </div>
             </div>
         </section>
-        {{-- Layanan --}}
+        {{-- Layanan
         <section id="layanan" class="py-5" style="background-color: #f3f3f3;">
             <div class="container" style="margin-bottom: 100px;margin-top: 40px;margin-bottom:120px">
                 <div class="row mb-5 justify-content-center">
@@ -186,7 +182,7 @@
             </div>
             </div>
             </div>
-        </section>
+        </section> --}}
         {{-- News Section --}}
         <section id="berita" class="py-5 px-5" style="background-color: #5a5a5a;">
             <div class="container" style="margin-bottom: 100px;margin-top: 25px;">
@@ -250,12 +246,10 @@
                         <div class="batas-wilayah mb-4">
                             <h3>Batas Wilayah</h3>
                             <ul class="list-unstyled">
-                                <li><i class="fas fa-chevron-right me-2"></i><strong>Barat:</strong> Batas 1
-                                </li>
-                                <li><i class="fas fa-chevron-right me-2"></i><strong>Utara:</strong> Batas 2</li>
-                                <li><i class="fas fa-chevron-right me-2"></i><strong>Selatan:</strong> Batas 3
-                                </li>
-                                <li><i class="fas fa-chevron-right me-2"></i><strong>Timur:</strong> Batas 4</li>
+                                <li><i class="fas fa-chevron-right me-2"></i><strong>Barat:</strong> Kelurahan Cibinong</li>
+                                <li><i class="fas fa-chevron-right me-2"></i><strong>Utara:</strong> Kelurahan Cibinong</li>
+                                <li><i class="fas fa-chevron-right me-2"></i><strong>Selatan:</strong> Kelurahan Cileungsi</li>
+                                <li><i class="fas fa-chevron-right me-2"></i><strong>Timur:</strong> Kelurahan Cileungsi</li>
                             </ul>
                         </div>
                         <div class="alamat-desa mb-4">

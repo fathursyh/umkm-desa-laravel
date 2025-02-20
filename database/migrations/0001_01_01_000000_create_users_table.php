@@ -14,14 +14,19 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('jenis_usaha')->nullable();
+            $table->integer('jumlah_karyawan')->nullable();
+            $table->year('tahun_berdiri')->nullable();
+            $table->string('alamat_usaha')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['umkm','admin'])->default('umkm');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
-            $table->string('business_certificate')->nullable();
-            $table->string('rt_letter')->nullable();
+            $table->string('nib')->nullable();
+            $table->string('surat_pengantar')->nullable();
             $table->text('rejection_reason')->nullable();
+            $table->string('deskripsi')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

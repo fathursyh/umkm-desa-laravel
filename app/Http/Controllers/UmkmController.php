@@ -24,7 +24,6 @@ class UmkmController extends Controller
         $umkm = User::findOrFail($id);
         $umkm->update(['status' => 'approved']);
 
-        // You can add notification here
 
         return redirect()->route('admin.umkm.index')
             ->with('success', 'UMKM has been approved successfully');
@@ -41,8 +40,6 @@ class UmkmController extends Controller
             'status' => 'rejected',
             'rejection_reason' => $request->rejection_reason
         ]);
-
-        // You can add notification here
 
         return redirect()->route('admin.umkm.index')
             ->with('success', 'UMKM has been rejected');

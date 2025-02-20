@@ -10,7 +10,7 @@
                 <div class="card-body p-4">
                     <div class="progress mb-4" style="height: 30px;">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%">
-                            Step 3 of 4 - Product Details
+                            Step 3 of 4 - Daftarkan Produk
                         </div>
                     </div>
 
@@ -19,9 +19,9 @@
                         <div id="products-container">
                             <div class="product-item mb-4">
                                 <div class="border rounded p-3 mb-3">
-                                    <h5 class="mb-3">Product #1</h5>
+                                    <h5 class="mb-3">Produk #1</h5>
                                     <div class="mb-3">
-                                        <label for="product_name_0" class="form-label">Product Name</label>
+                                        <label for="product_name_0" class="form-label">Nama Produk</label>
                                         <input type="text" class="form-control @error('products.0.name') is-invalid @enderror" 
                                             id="product_name_0" name="products[0][name]" value="{{ old('products.0.name') }}" required>
                                         @error('products.0.name')
@@ -30,10 +30,10 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="product_images_0" class="form-label">Product Images</label>
+                                        <label for="product_images_0" class="form-label">Foto Produk</label>
                                         <input type="file" class="form-control @error('products.0.images') is-invalid @enderror" 
                                             id="product_images_0" name="products[0][images][]" accept="image/*" multiple required>
-                                        <div class="form-text">You can select multiple images (JPG, PNG, JPEG)</div>
+                                        <div class="form-text">Kamu bisa pilih beberapa foto (JPG, PNG, JPEG)</div>
                                         @error('products.0.images')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -44,13 +44,13 @@
 
                         <div class="mb-4">
                             <button type="button" class="btn btn-success w-100" id="add-product">
-                                <i class="ri-add-line"></i> Add Another Product
+                                <i class="ri-add-line"></i> Tambah Produk Lain
                             </button>
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('register.step2') }}" class="btn btn-secondary">Previous</a>
-                            <button type="submit" class="btn btn-primary">Next Step</button>
+                            <a href="{{ route('register.step2') }}" class="btn btn-secondary">Sebelumnya</a>
+                            <button type="submit" class="btn btn-primary">Selanjutnya</button>
                         </div>
                     </form>
                 </div>

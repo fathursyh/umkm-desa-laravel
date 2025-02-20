@@ -61,11 +61,12 @@
                             <tbody>
                                 @foreach($submissions as $submission)
                                 <tr>
-                                    <td>{{ $submission->umkm_name }}</td>
-                                    <td>{{ $submission->business_type }}</td>
+                                    <td>{{ $submission->user->name }}</td>
+                                    <td>{{ $submission->user->jenis_usaha ?? "-" }}</td>
                                     <td>
                                         <span class="badge bg-{{ $submission->status == 'pending' ? 'warning' : 
-                                            ($submission->status == 'approved' ? 'success' : 'danger') }}">
+                                            ($submission->status == 'approved' ? 'success' : 
+                                            ($submission->status == 'revision' ? 'info' : 'danger')) }}">
                                             {{ ucfirst($submission->status) }}
                                         </span>
                                     </td>

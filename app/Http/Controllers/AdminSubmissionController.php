@@ -14,27 +14,6 @@ class AdminSubmissionController extends Controller
     {
         $query = Submission::query();
 
-        // Filter by Age
-        if ($request->age) {
-            $now = Carbon::now();
-
-            switch ($request->age) {
-                case '1': // Less than 1 year
-                    $date = $now->subYear();
-                    $query->where('establishment_date', '>=', $date);
-                    break;
-                case '2': // 1-2 years
-                    $date1 = $now->subYears(2);
-                    $date2 = $now->subYear();
-                    $query->whereBetween('establishment_date', [$date1, $date2]);
-                    break;
-                case '3': // More than 2 years
-                    $date = $now->subYears(2);
-                    $query->where('establishment_date', '<=', $date);
-                    break;
-            }
-        }
-
         // Filter by Status
         if ($request->status) {
             $query->where('status', $request->status);

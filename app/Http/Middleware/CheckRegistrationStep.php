@@ -11,12 +11,12 @@ class CheckRegistrationStep
     {
         switch ($step) {
             case 2:
-                if (!session()->has('registration_data')) {
+                if (!session()->has('auth_data')) {
                     return redirect()->route('register.step1');
                 }
                 break;
             case 3:
-                if (!session()->has('business_certificate')) {
+                if (!session()->has('registration_data')) {
                     return redirect()->route('register.step2');
                 }
                 break;

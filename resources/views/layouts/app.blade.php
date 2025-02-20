@@ -117,7 +117,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('account.dashboard') }}">UMKM System</a>
+                <a class="navbar-brand" href="{{ route('account.dashboard') }}">Portal Sistem</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -150,6 +150,10 @@
                                     <a class="nav-link {{ Request::routeIs('submissions.index') ? 'active' : '' }}" 
                                        href="{{ route('submissions.index') }}">My Submissions</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {{ Request::routeIs('products.index') ? 'active' : '' }}" 
+                                       href="{{ route('products.index') }}">My Products</a>
+                                </li>
                             @endif
                         </ul>
 
@@ -174,7 +178,7 @@
         </nav>
 
         <!-- Main Content -->
-        <main class="py-4" style="margin-top: 60px">
+        <main class="py-4">
             {{-- @if(session('success'))
                 <div class="container">
                     <div class="alert alert-success">

@@ -14,7 +14,7 @@
                                 <li class="mb-3 animated-text">
                                     <i class="fas fa-map-marker-alt mr-2"></i>
                                     <strong>Alamat:</strong><br>
-                                    Atang Senjaya, Kabupaten Bogor, Jawa Barat 16310
+                                    Atang Senjaya, Kecamatan Kemang, Kabupaten Bogor, Jawa Barat 16310
                                 </li>
                                 <li class="mb-3 animated-text">
                                     <i class="fas fa-phone-alt mr-2"></i>
