@@ -17,13 +17,15 @@ class SubmissionController extends Controller
 
     public function create()
     {
-        return view('umkm.submissions.create');
+        return view('umkm.submissions.create', [
+            'submition_count' => Auth::user()->submissions->count() <= 10,
+        ]);
     }
 
     public function store(Request $request)
     {
         // Check if user is not admin
-        if (Auth::user()->role === 'admin') {
+        if (Auth::user()->role === 'admin' || Auth::user()->submissions->count() >= 10) {
             abort(403);
         }
 
