@@ -233,7 +233,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 mb-4">
-                        <div class="lokasi-wrapper" style="height: 425px;">
+                        <div class="lokasi-wrapper overflow-hidden" style="height: 425px;">
                             <div class="map-container">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5230.280747357531!2d106.76030606579751!3d-6.5454513933678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c37c2f09f6df%3A0x375e417fb99248e!2sKantor%20Kelurahan%20Atang%20Senjaya!5e0!3m2!1sid!2sid!4v1735181793208!5m2!1sid!2sid"
