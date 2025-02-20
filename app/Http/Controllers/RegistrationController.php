@@ -18,7 +18,7 @@ class RegistrationController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',
         ]);
 
         $request->session()->put('auth_data', $validated);
@@ -29,7 +29,16 @@ class RegistrationController extends Controller
         if (!session()->has('auth_data')) {
             return redirect()->route('register.step1');
         }
-        return view('auth.register.step2');
+
+        return view('auth.register.step2', [
+            'jenis_usaha' => [
+                'Makanan & Minuman',
+                'Jasa',
+                'Fashion dan Kerajinan',
+                'Pertanian dan Peternakan',
+                'Toko Kelontong / Warung',
+            ]
+        ]);
     }
 
     public function storeStep2(Request $request)
@@ -58,6 +67,7 @@ class RegistrationController extends Controller
     {
         $request->validate([
             'products.*.name' => 'required|string|max:255',
+            'products.*.description' => 'required|string|max:1000',
             'products.*.images.*' => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
@@ -72,6 +82,7 @@ class RegistrationController extends Controller
 
             $products[] = [
                 'name' => $product['name'],
+                'description' => $product['description'],
                 'images' => $images
             ];
         }
@@ -117,6 +128,7 @@ class RegistrationController extends Controller
         foreach ($productData as $product) {
             $newProduct = Product::create([
                 'name' => $product['name'],
+                'description' => $product['description'],
                 'user_id' => $user->id
             ]);
 

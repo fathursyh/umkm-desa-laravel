@@ -17,29 +17,87 @@
                     <form method="POST" action="{{ route('register.step3.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div id="products-container">
-                            <div class="product-item mb-4">
-                                <div class="border rounded p-3 mb-3">
-                                    <h5 class="mb-3">Produk #1</h5>
-                                    <div class="mb-3">
-                                        <label for="product_name_0" class="form-label">Nama Produk</label>
-                                        <input type="text" class="form-control @error('products.0.name') is-invalid @enderror" 
-                                            id="product_name_0" name="products[0][name]" value="{{ old('products.0.name') }}" required>
-                                        @error('products.0.name')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                            @php
+                                $product_data = $errors->any() ? session()->getOldInput()['products'] : (session('product_data') ?? []);
+                            @endphp
 
-                                    <div class="mb-3">
-                                        <label for="product_images_0" class="form-label">Foto Produk</label>
-                                        <input type="file" class="form-control @error('products.0.images') is-invalid @enderror" 
-                                            id="product_images_0" name="products[0][images][]" accept="image/*" multiple required>
-                                        <div class="form-text">Kamu bisa pilih beberapa foto (JPG, PNG, JPEG)</div>
-                                        @error('products.0.images')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
+                            @forelse ($product_data as $product)
+                                <div class="product-item mb-4">
+                                    <div class="border rounded p-3 mb-3">
+                                        @if (!$loop->first)
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <h5 class="mb-0">Product #{{ $loop->index }}</h5>
+                                                <button type="button" class="btn btn-danger btn-sm remove-product">
+                                                    <i class="ri-delete-bin-line"></i>
+                                                </button>
+                                            </div>
+                                        @else
+                                            <h5 class="mb-3">Produk #{{ $loop->index }}</h5>
+                                        @endif
+                                        <div class="mb-3">
+                                            <label for="product_name_{{ $loop->index }}" class="form-label">Nama Produk</label>
+                                            <input type="text" class="form-control @error("products.{$loop->index}.name") is-invalid @enderror" 
+                                                id="product_name_{{ $loop->index }}" name="products[{{ $loop->index }}][name]" value="{{ $product['name'] }}" required>
+                                            @error("products.{$loop->index}.name")
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="product_description_{{ $loop->index }}">Deskripsi Produk</label>
+                                            <textarea class="form-control @error("products.{$loop->index}.description") is-invalid @enderror" id="product_description_{{ $loop->index }}" name="products[{{ $loop->index }}][description]" rows="4" required>{{ $product['description'] }}</textarea>
+                                            @error("products.{$loop->index}.description")
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="product_images_{{ $loop->index }}" class="form-label">Foto Produk</label>
+                                            <input type="file" class="form-control @error("products.{$loop->index}.images") is-invalid @enderror" 
+                                                id="product_images_{{ $loop->index }}" name="products[{{ $loop->index }}][images][]" accept="image/*" multiple required>
+                                            <div class="form-text">Kamu bisa pilih beberapa foto (JPG, PNG, JPEG)</div>
+                                            @error("products.{$loop->index}.images.*")
+                                                @foreach ($errors->get("products.{$loop->index}.images.*") as $errorMessages)
+                                                    @foreach ($errorMessages as $error)
+                                                        <p class="text-danger">{{ $error }}</p>
+                                                    @endforeach
+                                                @endforeach
+                                            @enderror
+
+                                            @php
+                                                if (!$errors->any()) {
+                                                    foreach ($product['images'] as $image) {
+                                                        \Illuminate\Support\Facades\Storage::disk('public')->delete($image);
+                                                    }
+                                                }
+                                            @endphp
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @empty
+                                <div class="product-item mb-4">
+                                    <div class="border rounded p-3 mb-3">
+                                        <h5 class="mb-3">Produk #1</h5>
+                                        <div class="mb-3">
+                                            <label for="product_name_0" class="form-label">Nama Produk</label>
+                                            <input type="text" class="form-control" 
+                                                id="product_name_0" name="products[0][name]" required>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label for="product_description_0">Deskripsi Produk</label>
+                                            <textarea class="form-control" id="product_description_0" name="products[0][description]" rows="4" required></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="product_images_0" class="form-label">Foto Produk</label>
+                                            <input type="file" class="form-control" 
+                                                id="product_images_0" name="products[0][images][]" accept="image/*" multiple required>
+                                            <div class="form-text">Kamu bisa pilih beberapa foto (JPG, PNG, JPEG)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforelse
                         </div>
 
                         <div class="mb-4">
@@ -81,6 +139,11 @@
                             <input type="text" class="form-control" 
                                 id="product_name_${productCount}" 
                                 name="products[${productCount}][name]" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="product_description_${productCount}">Deskripsi Produk</label>
+                            <textarea class="form-control" id="product_description_${productCount}" name="products[${productCount}][description]" rows="4" required></textarea>
                         </div>
 
                         <div class="mb-3">
