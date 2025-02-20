@@ -7,23 +7,36 @@
         @csrf
         @method('PUT')
         
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="name">Nama Produk</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" required>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $product->name }}" required>
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="description">Deskripsi Produk</label>
-            <textarea class="form-control" id="description" name="description" required>{{ $product->description }}</textarea>
+            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="4" required>{{ $product->description }}</textarea>
+            @error('description')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="images">Gambar Produk</label>
-            <input type="file" class="form-control" id="images" name="images[]" multiple>
+            <input type="file" class="form-control @error('images.*') is-invalid @enderror" id="images" name="images[]" multiple>
             <small class="form-text text-muted">Kosongkan jika tidak ingin mengubah gambar.</small>
+            @error('images.*')
+                @foreach ($errors->get('images.*') as $errorMessages)
+                    @foreach ($errorMessages as $error)
+                        <p class="text-danger">{{ $error }}</p>
+                    @endforeach
+                @endforeach
+            @enderror
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label>Gambar Saat Ini</label>
             <div>
                 @foreach($product->images as $image)

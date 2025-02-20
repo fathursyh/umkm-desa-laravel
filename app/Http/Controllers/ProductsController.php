@@ -22,45 +22,41 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'products.*.name' => 'required|string|max:255',
-            'products.*.description' => 'required|string|max:1000',
-            'products.*.images.*' => 'required|image|mimes:jpg,png,jpeg'
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:1000',
+            'images.*' => 'required|image|mimes:jpg,png,jpeg'
         ]);
-    
-        $products = [];
-        foreach ($request->products as $key => $product) {
-            $images = [];
-            if ($request->hasFile("products.{$key}.images")) {
-                foreach ($request->file("products.{$key}.images") as $image) {
-                    $images[] = $image->store('product_images', 'public');
-                }
+
+        $images = [];
+
+        if ($request->hasFile("images")) {
+            foreach ($request->file("images") as $image) {
+                $images[] = $image->store('product_images', 'public');
             }
-    
-            $products[] = [
-                'name' => $product['name'],
-                'description' => $product['description'],
-                'images' => $images
-            ];
         }
+
+        $product = [
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'images' => $images
+        ];
     
         $user = Auth::user();
-    
-        foreach ($products as $product) {
-            $newProduct = Product::create([
-                'name' => $product['name'],
-                'description' => $product['description'],
-                'user_id' => $user->id
+
+        $newProduct = Product::create([
+            'name' => $product['name'],
+            'description' => $product['description'],
+            'user_id' => $user->id
+        ]);
+
+        foreach ($product['images'] as $imagePath) {
+            $newProduct->images()->create([
+                'image_path' => $imagePath
             ]);
-    
-            foreach ($product['images'] as $imagePath) {
-                $newProduct->images()->create([
-                    'image_path' => $imagePath
-                ]);
-            }
         }
     
-        return redirect()->back()->with('success', 'Products created successfully.');
+        return redirect()->route('products.index');
     }
 
     public function show($id)
@@ -109,7 +105,7 @@ class ProductsController extends Controller
             }
         }
     
-        return redirect()->back()->with('success', 'Product updated successfully.');
+        return redirect()->route('products.index');
     }
 
     public function destroy($id)

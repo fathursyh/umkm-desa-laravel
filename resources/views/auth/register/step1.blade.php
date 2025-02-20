@@ -19,7 +19,7 @@
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama UMKM</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" 
-                                    id="name" name="name" value="{{ old('name') }}" required>
+                                    id="name" name="name" value="{{ old('name', is_array(session('auth_data')) ? session('auth_data')['name'] : null) }}" required>
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -28,7 +28,7 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">Alamat Email</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" 
-                                    id="email" name="email" value="{{ old('email') }}" required>
+                                    id="email" name="email" value="{{ old('email', is_array(session('auth_data')) ? session('auth_data')['email'] : null) }}" required>
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -36,7 +36,7 @@
                             
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password Baru</label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" 
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" value="{{ is_array(session('auth_data')) && !$errors->has('password') ? session('auth_data')['password'] : null }}"
                                     id="password" name="password" required>
                                 @error('password')
                                     <div class="invalid-feedback">{{ $message }}</div>
