@@ -18,7 +18,7 @@ class SubmissionController extends Controller
     public function create()
     {
         return view('umkm.submissions.create', [
-            'submition_count' => Auth::user()->submissions->count() <= 10,
+            'submition_count' => Auth::user()->submissions->count() >= 10,
         ]);
     }
 
