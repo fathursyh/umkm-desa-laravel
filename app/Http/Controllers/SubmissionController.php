@@ -17,10 +17,7 @@ class SubmissionController extends Controller
 
     public function create()
     {
-        $umkm = Auth::user();
-        return view('umkm.submissions.create', [
-            "umkm" => $umkm
-        ]);
+        return view('umkm.submissions.create');
     }
 
     public function store(Request $request)
