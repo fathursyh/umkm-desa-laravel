@@ -15,18 +15,6 @@
                         <form action="{{ route('admin.submissions.index') }}" method="GET" class="mb-4">
                             <div class="row g-3 align-items-end">
                                 <div class="col-md-3">
-                                    <label class="form-label">Filter by UMKM Age</label>
-                                    <select name="age" class="form-select">
-                                        <option value="">All Ages</option>
-                                        <option value="1" {{ request('age') == '1' ? 'selected' : '' }}>Less than 1
-                                            year</option>
-                                        <option value="2" {{ request('age') == '2' ? 'selected' : '' }}>1-2 years
-                                        </option>
-                                        <option value="3" {{ request('age') == '3' ? 'selected' : '' }}>More than 2
-                                            years</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
                                     <label class="form-label">Filter by Status</label>
                                     <select name="status" class="form-select">
                                         <option value="">All Status</option>

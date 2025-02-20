@@ -18,7 +18,7 @@
                             <div class="card bg-primary text-white">
                                 <div class="card-body">
                                     <h5>Total Submissions</h5>
-                                    <h3>{{ $user->submissions()->count() }}/10</h3>
+                                    <h3>{{ $total }}/10</h3>
                                 </div>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                             <div class="card bg-success text-white">
                                 <div class="card-body">
                                     <h5>Approved</h5>
-                                    <h3>{{ $user->submissions()->where('status', 'approved')->count() }}</h3>
+                                    <h3>{{ $approved }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                             <div class="card bg-warning text-white">
                                 <div class="card-body">
                                     <h5>Pending</h5>
-                                    <h3>{{ $user->submissions()->where('status', 'pending')->count() }}</h3>
+                                    <h3>{{ $pending }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -55,8 +55,8 @@
                             <tbody>
                                 @foreach($submissions as $submission)
                                 <tr>
-                                    <td>{{ $submission->umkm_name }}</td>
-                                    <td>{{ $submission->business_type }}</td>
+                                    <td>{{ $submission->user->name }}</td>
+                                    <td>{{ $submission->user->jenis_usaha ?? "-" }}</td>
                                     <td>
                                         <span class="badge bg-{{ $submission->status == 'pending' ? 'warning' : 
                                             ($submission->status == 'approved' ? 'success' : 

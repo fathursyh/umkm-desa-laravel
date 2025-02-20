@@ -20,7 +20,7 @@
                         <tr>
                             <th>UMKM Name</th>
                             <th>Business Type</th>
-                            <th>Age</th>
+                            <th>Tahun Berdiri</th>
                             <th>Status</th>
                             <th>Submission Date</th>
                             <th>Actions</th>
@@ -29,9 +29,9 @@
                     <tbody>
                         @foreach($submissions as $submission)
                         <tr>
-                            <td>{{ $submission->umkm_name }}</td>
-                            <td>{{ $submission->business_type }}</td>
-                            <td>{{ $submission->umkm_age }}</td>
+                            <td>{{ $submission->user->name }}</td>
+                            <td>{{ $submission->user->jenis_usaha ?? "-" }}</td>
+                            <td>{{ $submission->user->tahun_berdiri ?? "-" }}</td>
                             <td>
                                 <span class="badge bg-{{ $submission->status == 'pending' ? 'warning' : 
                                     ($submission->status == 'approved' ? 'success' : 
